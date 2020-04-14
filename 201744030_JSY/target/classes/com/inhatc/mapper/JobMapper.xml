@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.inhatc.mapper.JobMapper">
+
+	<select id="getList" resultType="com.inhatc.domain.JobVO">
+		<![CDATA[
+		select * from tbl_201744030_job
+		]]>
+	</select>
+	
+	<insert id="insert">
+		insert into tbl_201744030_job (comName,classifcation,money,officeName,workDate,idCard)
+		values (#{comName}, #{classifcation}, #{money}, #{officeName}, #{workDate}, #{idCard})
+	</insert>
+	
+	
+	<select id="read" resultType="com.inhatc.domain.JobVO">
+		select * from tbl_201744030_job where comName = #{comName}
+	</select>
+	
+	<delete id="delete">
+		delete tbl_201744030_job where comName = #{comName}
+	</delete>
+	
+	<update id="update">
+		update tbl_201744030_job
+		set classifcation = #{classifcation},
+		money = #{money},
+		officeName = #{officeName},
+		workDate = #{workDate},
+		idCard = #{idCard}
+		where comName = #{comName}
+	</update>
+
+</mapper>

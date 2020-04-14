@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.inhatc.mapper.StudentInfoMapper">
+
+	<select id="getList" resultType="com.inhatc.domain.StudentInfoVO">
+		<![CDATA[
+		select * from tbl_studentInfo where id>0
+		]]>
+	</select>
+	
+	<insert id="insert">
+		insert into tbl_studentInfo (id,name,addr,phone,email)
+		values (#{id}, #{name}, #{addr}, #{phone}, #{email})
+	</insert>
+	
+	
+	<select id="read" resultType="com.inhatc.domain.StudentInfoVO">
+		select * from tbl_studentInfo where id = #{id}
+	</select>
+	
+	<delete id="delete">
+		delete tbl_studentInfo where id = #{id}
+	</delete>
+	
+	<update id="update">
+		update tbl_studentInfo
+		set name= #{name},
+		addr=#{addr},
+		phone = #{phone},
+		email = #{email}
+		where id = #{id}
+	</update>
+
+</mapper>
